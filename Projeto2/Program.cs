@@ -125,8 +125,8 @@ namespace Projeto2
             Principal.GerarSequenciaAPartirDaLinguagem();
             //Principal.GerarLinguagemAPartirDaSequencia();
 
-            
-            
+
+
             if (!string.IsNullOrEmpty(Principal.Erro))
             {
                 Console.WriteLine(Principal.Erro);

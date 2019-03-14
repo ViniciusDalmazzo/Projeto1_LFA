@@ -125,11 +125,11 @@ namespace Projeto2
             Graph Grafo = new Graph();
             Queue<Node> Nos = new Queue<Node>();
 
-            string ParaInicial = RegrasDeProducao.Where(x => x.De == Inicial).ToList().FirstOrDefault().Para;
-            Node Node = new Node(ParaInicial);
+            //string ParaInicial = RegrasDeProducao.Where(x => x.De == Inicial).ToList().FirstOrDefault().Para;
+            Node Node = new Node(Inicial);
 
             Nos.Enqueue(Node);
-            Grafo.AddNode(ParaInicial);
+            Grafo.AddNode(Node);
 
             while (Nos.Count > 0)
             {
@@ -145,11 +145,28 @@ namespace Projeto2
 
                     Node = new Node(result);
                     Grafo.AddNode(result);
+                    Node.Parent = nodeDequeue;
                     Nos.Enqueue(Node);
-                    Grafo.AddEdge(Node.Name, nodeDequeue.Name, Regra.Indice);
+                    Grafo.AddEdge(nodeDequeue, Node, Regra.Indice);
 
                     if (result == "baba")
-                        Grafo.DepthFirstSearch("baba");
+                    {
+                        Node NodeAux = Node;
+                        List<Edge> EdgesAux = new List<Edge>();
+
+                        while(NodeAux.Parent != null)
+                        {
+                            var Parent = NodeAux.Parent;
+                            var Edge = Parent.Edges.Where(x => x.To == NodeAux).FirstOrDefault();
+                            EdgesAux.Add(Edge);
+                            NodeAux = Parent;
+                        }
+
+                        EdgesAux.Reverse();
+
+                        return;
+
+                    }
                 }
             }
 

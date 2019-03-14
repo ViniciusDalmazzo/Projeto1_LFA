@@ -85,9 +85,7 @@ namespace Projeto2
         /// <param name="cost">O custo associado ao arco.</param>
         public void AddEdge(Node to, double cost)
         {
-            // Grafo não-dirigido
             Edges.Add(new Edge(this, to, cost));
-            Edges.Add(new Edge(to, this, cost));
         }
 
         #endregion

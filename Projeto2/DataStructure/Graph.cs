@@ -14,7 +14,7 @@ namespace Projeto2
         /// <summary>
         /// Lista de nós que compõe o grafo
         /// </summary>
-        List<Node> nodes = new List<Node>();
+        public List<Node> nodes = new List<Node>();
         
         public List<Node> DepthFirstSearch(string begin)
         {
@@ -66,6 +66,14 @@ namespace Projeto2
         /// <summary>
         /// Adiciona um nó ao grafo.
         /// </summary>
+        public void AddNode(Node node)
+        {
+            nodes.Add(node);
+        }
+
+        /// <summary>
+        /// Adiciona um nó ao grafo.
+        /// </summary>
         /// <param name="name">O nome do nó a ser adicionado.</param>
         /// <param name="info">A informação a ser armazenada no nó.</param>
         public void AddNode(string name)
@@ -88,6 +96,17 @@ namespace Projeto2
             //    nodeTo.AddEdge(nodeFrom, cost);
 
             nodeFrom.AddEdge(nodeTo, cost);
+        }
+
+        /// <summary>
+        /// Adiciona o arco entre dois nós associando determinado custo.
+        /// </summary>
+        /// <param name="nameFrom">O nó de origem.</param>
+        /// <param name="nameTo">O nó de destino.</param>
+        /// <param name="cost">O cust associado.</param>
+        public void AddEdge(Node from, Node to, int cost)
+        {
+            from.AddEdge(to, cost);
         }
 
         /// <summary>

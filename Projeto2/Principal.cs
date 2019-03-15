@@ -21,7 +21,7 @@ namespace Projeto2
             Sequencia = new List<int>();
         }
 
-        public void Validacoes()
+        public void Validacoes(bool validaSequencia)
         {
             if (string.IsNullOrEmpty(Inicial))
             {
@@ -40,13 +40,7 @@ namespace Projeto2
                 Erro = "Deve existir ao menos uma variável adicionada.";
                 return;
             }
-
-            if (Sequencia.Count == 0)
-            {
-                Erro = "Deve existir ao menos uma sequência adicionada.";
-                return;
-            }
-
+            
             bool Exists = Variaveis.Exists(x => x == Inicial);
 
             if (!Exists)
@@ -63,12 +57,22 @@ namespace Projeto2
                 return;
             }
 
-            var regra = RegrasDeProducao.Where(x => x.Indice == Sequencia.FirstOrDefault()).FirstOrDefault();
-
-            if (regra.De != Inicial)
+            if (validaSequencia == true)
             {
-                Erro = "A primeira regra de produção da sequencia não é compatível com a palavra inicial.";
-                return;
+
+                if (Sequencia.Count == 0)
+                {
+                    Erro = "Deve existir ao menos uma sequência adicionada.";
+                    return;
+                }
+
+                var regra = RegrasDeProducao.Where(x => x.Indice == Sequencia.FirstOrDefault()).FirstOrDefault();
+
+                if (regra.De != Inicial)
+                {
+                    Erro = "A primeira regra de produção da sequencia não é compatível com a palavra inicial.";
+                    return;
+                }
             }
 
         }
@@ -120,12 +124,10 @@ namespace Projeto2
             Resposta = Resultado;
         }
 
-        public void GerarSequenciaAPartirDaLinguagem()
+        public List<int> GerarSequenciaAPartirDaLinguagem()
         {
             Graph Grafo = new Graph();
             Queue<Node> Nos = new Queue<Node>();
-
-            //string ParaInicial = RegrasDeProducao.Where(x => x.De == Inicial).ToList().FirstOrDefault().Para;
             Node Node = new Node(Inicial);
 
             Nos.Enqueue(Node);
@@ -164,12 +166,13 @@ namespace Projeto2
 
                         EdgesAux.Reverse();
 
-                        return;
-
+                        return EdgesAux.Select(x => x.Cost).ToList();
+                        
                     }
                 }
             }
 
+            return null;
 
         }
     }

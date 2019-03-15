@@ -21,7 +21,7 @@ namespace Projeto2
         /// <summary>
         /// O custo associado ao arco.
         /// </summary>
-        public double Cost { get; set; }
+        public int Cost { get; set; }
 
         #endregion
 
@@ -43,7 +43,7 @@ namespace Projeto2
         /// <param name="from">O nó origem do arco.</param>
         /// <param name="to">O nó destino do arco.</param>
         /// <param name="cost">O custo associado ao arco.</param>
-        public Edge(Node from, Node to, double cost)
+        public Edge(Node from, Node to, int cost)
         {
             this.From = from;
             this.To = to;

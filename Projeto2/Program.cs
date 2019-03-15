@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Projeto2
 {
@@ -7,6 +8,7 @@ namespace Projeto2
         static void Main(string[] args)
         {
             Principal Principal = new Principal();
+            int opcao = 0;
 
             #region Alfabeto
 
@@ -72,29 +74,7 @@ namespace Projeto2
             }
             
             #endregion
-
-            #region Sequencia
-
-            Console.Clear();
-
-            Console.WriteLine("Digite a quantidade de números da sequência: ");
-
-            RetornoUsuario = Console.ReadLine();
-            int.TryParse(RetornoUsuario, out int QtdSequencia);
-
-            for (int i = 1; i <= QtdSequencia; i++)
-            {
-                Console.WriteLine($"Digite o {i}° número da sequência: ");
-
-                RetornoUsuario = Console.ReadLine();
-
-                int.TryParse(RetornoUsuario, out int Sequencia);
-
-                Principal.Sequencia.Add(Sequencia);
-            }
             
-            #endregion
-
             #region Letra inicial
 
             Console.Clear();
@@ -107,35 +87,96 @@ namespace Projeto2
 
             #endregion
 
-            Console.Clear();
-
-            Console.WriteLine("Validando informações..");
-
-            Principal.Validacoes();
-
-            if(!string.IsNullOrEmpty(Principal.Erro))            
+            do
             {
-                Console.WriteLine(Principal.Erro);
-                Console.ReadLine();
-                return;
-            }
+                Console.Clear();
 
-            Console.WriteLine("Gerando linguagem a partir das informações..");
+                Console.WriteLine("PROJETO 1 - LFA");
+                Console.WriteLine("1 - Gerar sequência a partir das informações.");
+                Console.WriteLine("2 - Gerar linguagem a partir das informações.");
+                Console.WriteLine("Digite uma opção");
 
-            Principal.GerarSequenciaAPartirDaLinguagem();
-            //Principal.GerarLinguagemAPartirDaSequencia();
+                int.TryParse(Console.ReadLine(), out opcao);
 
+            } while (opcao != 1 && opcao != 2);
 
-
-            if (!string.IsNullOrEmpty(Principal.Erro))
+            #region Gerar sequência a partir de informações
+            if (opcao == 1)
             {
-                Console.WriteLine(Principal.Erro);
-                Console.ReadLine();
-                return;
+                Console.Clear();
+
+                Console.WriteLine("Validando informações..");
+
+                Principal.Validacoes(false);
+
+                if (!string.IsNullOrEmpty(Principal.Erro))
+                {
+                    Console.WriteLine(Principal.Erro);
+                    Console.ReadLine();
+                    return;
+                }
+
+                Console.WriteLine("Gerando sequência a partir das informações..");
+
+                List<int> sequenciaGerada = Principal.GerarSequenciaAPartirDaLinguagem();
+
+                Console.WriteLine($"Sequência gerada com sucesso. Resultado: {string.Join(", ", sequenciaGerada)}");               
             }
+            #endregion
 
-            Console.WriteLine($"Linguagem gerada com sucesso. Resultado: {Principal.Resposta}");
+            #region Gerar linguagem a partir de informações
+            else if (opcao == 2)
+            {
+                #region Sequencia
 
+                Console.Clear();
+
+                Console.WriteLine("Digite a quantidade de números da sequência: ");
+
+                RetornoUsuario = Console.ReadLine();
+                int.TryParse(RetornoUsuario, out int QtdSequencia);
+
+                for (int i = 1; i <= QtdSequencia; i++)
+                {
+                    Console.WriteLine($"Digite o {i}° número da sequência: ");
+
+                    RetornoUsuario = Console.ReadLine();
+
+                    int.TryParse(RetornoUsuario, out int Sequencia);
+
+                    Principal.Sequencia.Add(Sequencia);
+                }
+
+                #endregion
+
+                Console.Clear();
+
+                Console.WriteLine("Validando informações..");
+
+                Principal.Validacoes(true);
+
+                if (!string.IsNullOrEmpty(Principal.Erro))
+                {
+                    Console.WriteLine(Principal.Erro);
+                    Console.ReadLine();
+                    return;
+                }
+
+                Console.WriteLine("Gerando linguagem a partir das informações..");
+
+                Principal.GerarLinguagemAPartirDaSequencia();
+
+                if (!string.IsNullOrEmpty(Principal.Erro))
+                {
+                    Console.WriteLine(Principal.Erro);
+                    Console.ReadLine();
+                    return;
+                }
+
+                Console.WriteLine($"Linguagem gerada com sucesso. Resultado: {Principal.Resposta}");
+            }
+            #endregion
+            
             Console.ReadLine();
 
         }

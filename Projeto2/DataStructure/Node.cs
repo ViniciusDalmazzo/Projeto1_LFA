@@ -83,7 +83,7 @@ namespace Projeto2
         /// </summary>
         /// <param name="to">O nó destino.</param>
         /// <param name="cost">O custo associado ao arco.</param>
-        public void AddEdge(Node to, double cost)
+        public void AddEdge(Node to, int cost)
         {
             Edges.Add(new Edge(this, to, cost));
         }

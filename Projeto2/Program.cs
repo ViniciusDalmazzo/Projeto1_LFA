@@ -103,6 +103,18 @@ namespace Projeto2
             #region Gerar sequência a partir de informações
             if (opcao == 1)
             {
+                #region Letra inicial
+
+                Console.Clear();
+
+                Console.WriteLine("Digite a resposta: ");
+
+                RetornoUsuario = Console.ReadLine();
+
+                Principal.Resposta = RetornoUsuario;
+
+                #endregion
+
                 Console.Clear();
 
                 Console.WriteLine("Validando informações..");
@@ -120,7 +132,7 @@ namespace Projeto2
 
                 List<int> sequenciaGerada = Principal.GerarSequenciaAPartirDaLinguagem();
 
-                Console.WriteLine($"Sequência gerada com sucesso. Resultado: {string.Join(", ", sequenciaGerada)}");               
+                Console.WriteLine($"Sequência gerada com sucesso. Resultado: {string.Join(", ", sequenciaGerada)}");
             }
             #endregion
 

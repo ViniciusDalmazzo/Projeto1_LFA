@@ -52,32 +52,11 @@ namespace Projeto2
             this.Edges = new List<Edge>();
             this.Name = name;
         }
-
-        /// <summary>
-        /// Cria um novo nó.
-        /// </summary>
-        /// <param name="name">O nome do nó.</param>
-        /// <param name="info">A informação armazenada no nó.</param>
-        public Node(string name, object info) : this()
-        {
-            this.Name = name;
-            this.Info = info;
-            this.Visited = false;
-        }
-
+        
         #endregion
 
         #region Métodos
-
-        /// <summary>
-        /// Adiciona um arco com nó origem igual ao nó atual, e destino e custo de acordo com os parâmetros.
-        /// </summary>
-        /// <param name="to">O nó destino.</param>
-        public void AddEdge(Node to)
-        {
-            AddEdge(to, 0);
-        }
-
+        
         /// <summary>
         /// Adiciona um arco com nó origem igual ao nó atual, e destino e custo de acordo com os parâmetros.
         /// </summary>

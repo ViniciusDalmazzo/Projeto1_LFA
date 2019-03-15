@@ -74,7 +74,14 @@ namespace Projeto2
                     return;
                 }
             }
-
+            else
+            {
+                if(string.IsNullOrEmpty(Resposta))
+                {
+                    Erro = "A resposta precisa ser adicionada.";
+                    return;
+                }
+            }
         }
 
         public string SubstituirPrimeiraOcorrencia(string source, string find, string replace)
@@ -151,7 +158,7 @@ namespace Projeto2
                     Nos.Enqueue(Node);
                     Grafo.AddEdge(nodeDequeue, Node, Regra.Indice);
 
-                    if (result == "baba")
+                    if (result == Resposta)
                     {
                         Node NodeAux = Node;
                         List<Edge> EdgesAux = new List<Edge>();

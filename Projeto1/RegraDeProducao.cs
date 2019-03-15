@@ -1,4 +1,4 @@
-﻿namespace Projeto2
+﻿namespace Projeto1
 {
     public class RegraDeProducao
     {

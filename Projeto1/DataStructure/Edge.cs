@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Projeto2
+namespace Projeto1
 {
     /// <summary>
     /// Classe que representa um arco.

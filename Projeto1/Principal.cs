@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Projeto2
+namespace Projeto1
 {
     public class Principal
     {

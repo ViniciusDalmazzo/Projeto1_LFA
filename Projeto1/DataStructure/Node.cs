@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projeto2
+namespace Projeto1
 {
     /// <summary>
     /// Classe que representa um nó dentro de um grafo.

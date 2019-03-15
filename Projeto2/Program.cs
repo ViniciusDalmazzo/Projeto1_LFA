@@ -136,7 +136,7 @@ namespace Projeto2
             }
             #endregion
 
-            #region Gerar linguagem a partir de informações
+            #region Gerar palavra a partir de informações
             else if (opcao == 2)
             {
                 #region Sequencia
@@ -174,9 +174,9 @@ namespace Projeto2
                     return;
                 }
 
-                Console.WriteLine("Gerando linguagem a partir das informações..");
+                Console.WriteLine("Gerando palavra a partir das informações..");
 
-                Principal.GerarLinguagemAPartirDaSequencia();
+                Principal.GerarPalavraAPartirDaSequencia();
 
                 if (!string.IsNullOrEmpty(Principal.Erro))
                 {
@@ -185,7 +185,7 @@ namespace Projeto2
                     return;
                 }
 
-                Console.WriteLine($"Linguagem gerada com sucesso. Resultado: {Principal.Resposta}");
+                Console.WriteLine($"Palavra gerada com sucesso. Resultado: {Principal.Resposta}");
             }
             #endregion
             

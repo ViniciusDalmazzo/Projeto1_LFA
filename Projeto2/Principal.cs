@@ -97,7 +97,7 @@ namespace Projeto2
             return Regras;
         }
 
-        public void GerarLinguagemAPartirDaSequencia()
+        public void GerarPalavraAPartirDaSequencia()
         {
             string Resultado = string.Empty;
 
